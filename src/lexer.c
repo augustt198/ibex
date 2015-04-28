@@ -46,6 +46,16 @@ Token *LexerNext(Lexer *lex) {
                 return TokenNew(NULL, TOK_L_PAREN);
             case ')':
                 return TokenNew(NULL, TOK_R_PAREN);
+            case '+':
+                return TokenNew(NULL, TOK_ADD);
+            case '-':
+                return TokenNew(NULL, TOK_SUB);
+            case '*':
+                return TokenNew(NULL, TOK_MUL);
+            case '/':
+                return TokenNew(NULL, TOK_DIV);
+            case '%':
+                return TokenNew(NULL, TOK_REM);
             case '"':
                 return lexerNextStringTok(lex);
             default:

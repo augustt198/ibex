@@ -9,6 +9,11 @@ typedef enum TokenType {
     TOK_NUMBER,
     TOK_L_PAREN,
     TOK_R_PAREN,
+    TOK_ADD,
+    TOK_SUB,
+    TOK_MUL,
+    TOK_DIV,
+    TOK_REM,
     TOK_EOF
 } TokenType;
 
