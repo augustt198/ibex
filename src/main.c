@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
         printf("Expected at least one source file\n");
         return -1;
     }
-    
+
     for (int i = 1; i < argc; i++) {
         printf("Compiling %s\n", argv[i]);
         char* source = file2str(argv[i]);
