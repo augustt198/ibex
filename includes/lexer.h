@@ -23,7 +23,7 @@ typedef struct {
     int  type;
 } Token;
 
-Token* TokenNew(char *content, TokenType type);
+Token *TokenNew(char *content, TokenType type);
 
 typedef struct {
     char *source;

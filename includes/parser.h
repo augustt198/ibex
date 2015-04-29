@@ -15,4 +15,4 @@ typedef struct {
     };
 } BlockEntry;
 
-list_t *Blockify(char** lines, int len, int *pos, int lvl);
+list_t *Blockify(char **lines, int len, int *pos, int lvl);

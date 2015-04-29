@@ -16,7 +16,7 @@ Lexer *LexerNew(char *source, int len) {
     lex->source   = source;
     lex->len      = len;
     lex->position = 0;
-    
+
     return lex;
 }
 

@@ -12,8 +12,7 @@ int main(int argc, char **argv) {
         printf("Compiling %s\n", argv[i]);
 
         FILE *file = fopen(argv[i], "r");
-        char* source = file2str(file);
-
+        char *source = file2str(file);
         compile(source);
     }
 }
