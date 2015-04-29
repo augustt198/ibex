@@ -1,6 +1,13 @@
 #include "parser.h"
 
-int getIndentationLevel(char *line);
+int getIndentationLevel(char *line) {
+    int len = strlen(line);
+
+    int i = 0;
+    for (; i < len && line[i] == ' '; i++);
+
+    return i;
+}
 
 list_t *Blockify(char **lines, int len, int *pos, int lvl) {
     list_t *list = malloc(sizeof(list_t));
@@ -28,13 +35,4 @@ list_t *Blockify(char **lines, int len, int *pos, int lvl) {
     }
 
     return list;
-}
-
-int getIndentationLevel(char *line) {
-    int len = strlen(line);
-
-    int i = 0;
-    for (; i < len && line[i] == ' '; i++);
-
-    return i;
 }
