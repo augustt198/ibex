@@ -1,22 +1,18 @@
 #include "util.h"
 
-char *file2str(char *name) {
-    FILE *file = fopen(name, "r");
+char *file2str(FILE *file) {
+    fseek(file, 0, SEEK_END);
+    int length = ftell(file);
 
-    if (file) {
-        fseek(file, 0, SEEK_END);
-        int length = ftell(file);
-        rewind(file);
-        char *buffer = malloc(length + 1);
-        buffer[length] = '\0';
-        if (buffer) {
-            fread(buffer, length, 1, file);
-        }
-        fclose(file);
-        return buffer;
+    rewind(file);
+
+    char *buffer = malloc(length + 1);
+    buffer[length] = '\0';
+    if (buffer) {
+        fread(buffer, length, 1, file);
     }
 
-    return NULL;
+    return buffer;
 }
 
 bool isAlpha(char c) {
@@ -30,6 +26,17 @@ bool isDigit(char c) {
 sds sdscatc(sds s, char chr) {
     char str[2];
     str[0] = chr;
-    
+
     return sdscatlen(s, str, 1);
+}
+
+int fcountlines(FILE *file) {
+    char *line = NULL;
+    size_t linecap = 0;
+    int lines = 0;
+
+    while (getline(&line, &linecap, file) != -1)
+        lines++;
+
+    return lines;
 }
