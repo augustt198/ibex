@@ -1404,6 +1404,11 @@ SIMCLIST_METER(uint64_t)
 SIMCLIST_METER(float)
 SIMCLIST_METER(double)
 
+// MODIFIED by August
+size_t list_meter_pointer(const void *el) {
+    return sizeof(void*);
+}
+
 size_t list_meter_string(const void *el) { return strlen((const char *)el) + 1; }
 
 /* ready-made hashing functions */

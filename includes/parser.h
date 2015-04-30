@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "simclist.h"
+#include "ast.h"
 
 enum BlockEntryType {
     BLOCK,
@@ -15,4 +16,5 @@ typedef struct {
     };
 } BlockEntry;
 
-list_t *Blockify(char **lines, int len, int *pos, int lvl);
+ASTNode *CreateUnprocessedBody(char **lines, int len,
+    int *pos, int lvl);

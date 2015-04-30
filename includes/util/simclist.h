@@ -890,6 +890,9 @@ size_t list_meter_float(const void *el);
  */
 size_t list_meter_double(const void *el);
 
+// MODIFIED by August
+size_t list_meter_pointer(const void *el);
+
 /**
  * ready-made metric function for string elements.
  * @see list_attributes_copy()
