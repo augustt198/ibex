@@ -9,10 +9,6 @@ int main(int argc, char **argv) {
     }
 
     for (int i = 1; i < argc; i++) {
-        printf("Compiling %s\n", argv[i]);
-
-        FILE *file = fopen(argv[i], "r");
-        char *source = file2str(file);
-        compile(source);
+        compile(argv[i]);
     }
 }

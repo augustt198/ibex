@@ -12,6 +12,7 @@ int getIndentationLevel(char *line) {
 list_t *Blockify(char **lines, int len, int *pos, int lvl) {
     list_t *list = malloc(sizeof(list_t));
     list_init(list);
+    // uint64 because BlockEntry* is being stored
     list_attributes_copy(list, list_meter_uint64_t, 0);
 
     while (*pos < len) {

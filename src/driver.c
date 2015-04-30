@@ -1,18 +1,32 @@
 #include "driver.h"
 
-void compile(char *source) {
-    Lexer *lex = LexerNew(source, strlen(source));
+void printBlock(list_t *block) {
+    printf(">>> BLOCK START\n");
 
-    for (;;) {
-        Token *tok = LexerNext(lex);
-        printf("%d", tok->type);
-        if (tok->content != NULL) {
-            printf(", %s\n", tok->content);
+    list_iterator_start(block);
+    while (list_iterator_hasnext(block)) {
+        BlockEntry *entry = list_iterator_next(block);
+        if (entry->type == LINE) {
+            printf("%s\n", entry->line);
         } else {
-            printf("\n");
-        }
-        if (tok->type == TOK_EOF) {
-            break;
+            printBlock(entry->block);
         }
     }
+
+    printf("<<< BLOCK END\n");
+}
+
+void compile(char *filename) {
+    FILE *file    = fopen(filename, "r");
+
+    int linecount = fcountlines(file);
+    char *lines[linecount];
+    fsplitlines(lines, file);
+    fclose(file);
+
+    int pos = 0;
+    list_t *block = Blockify(lines, linecount, &pos, 0);
+
+    printf("%s block structure:\n", filename);
+    printBlock(block);
 }

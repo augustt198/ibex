@@ -38,5 +38,22 @@ int fcountlines(FILE *file) {
     while (getline(&line, &linecap, file) != -1)
         lines++;
 
+    rewind(file);
+
     return lines;
+}
+
+ void fsplitlines(char **lines, FILE *file) {
+     char *line     = NULL;
+     size_t linecap = 0;
+     int i          = 0;
+     int len;
+
+     while ((len = getline(&line, &linecap, file)) != -1) {
+         lines[i] = malloc(len);
+         strncpy(lines[i], line, len - 1);
+         i++;
+     }
+
+     rewind(file);
 }
